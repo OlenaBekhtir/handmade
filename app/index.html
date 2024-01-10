@@ -64,25 +64,82 @@
       font-size: 18px;
       text-align: justify;
     }
+
+    .burger-icon {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      z-index: 3;
+      margin-top: 40px;
+      margin-left: 40px;
+    }
+
+    .burger-icon.active {
+      margin-left: 10px;
+    }
+
+    .wrap-menu.active {
+      width: 245px;
+      height: 100vh;
+      position: absolute;
+      top: 110px;
+      padding-top: 110px;
+      margin-top: -110px;
+      background-color: bisque;
+      z-index: 1;
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin-left: 20px;
+      display: none;
+    }
+
+    .menu-items li {
+      margin: 10px 0;
+    }
+
+    .menu-items a {
+      text-decoration: none;
+      color: brown;
+      font-size: 20px;
+      margin-left: 20px;
+    }
+
+    .menu-items.active {
+      display: flex;
+      flex-direction: column;
+    }
   </style>
 </head>
 
 <body>
   <div class="site-container">
     <header class="header">
-      <div class="container header__container">
-        <button class="burger btn-reset header__burger">
-          <span class="burger__line"></span>
-        </button>
-        <nav class="nav header__nav">
-          <ul class="nav__list">
-            <li class="nav__item"><a href="./index.html" class="main-link nav__link--current">Головна</a></li>
-            <li class="nav__item"><a href="./catalog.html" class="main-link nav__link">Каталог</a></li>
-            <li class="nav__item"><a href="./basket.html" class="main-link nav__link nav__link">Кошик</a></li>
+      <div class="header-menu">
+        <div class="burger-icon" onclick="toggleMenu()">
+          <button class="burger btn-reset header__burger">
+            <span class="burger__line"></span>
+          </button>
+        </div>
+        <div class="wrap-menu">
+          <ul class="menu-items">
+            <li><a href="./index.html">Головна</a></li>
+            <li><a href="./catalog.html">Каталог</a></li>
+            <li><a href="./basket.html">Кошик</a></li>
           </ul>
-          <button class="nav__close btn-reset">close</button>
-          <a href="./index.html"><img class="logo-img" src="./img/handmade_logo.jpg" alt="logo" /></a>
-        </nav>
+        </div>
+        <div class="container header__container">
+          <nav class="nav header__nav">
+            <ul class="nav__list">
+              <li class="nav__item"><a href="./index.html" class="main-link nav__link--current">Головна</a></li>
+              <li class="nav__item"><a href="./catalog.html" class="main-link nav__link">Каталог</a></li>
+              <li class="nav__item"><a href="./basket.html" class="main-link nav__link nav__link">Кошик</a></li>
+            </ul>
+            <button class="nav__close btn-reset">close</button>
+            <a href="./index.html"><img class="logo-img" src="./img/handmade_logo.jpg" alt="logo" /></a>
+          </nav>
     </header>
 
 
@@ -153,29 +210,6 @@
           <button class="carousel-prev">❮</button>
           <button class="carousel-next">❯</button>
         </div>
-        <!-- <h2 class="visually-hidden">Banners</h2>
-        <div class="container banners__container">
-          <ul class="banners__list">
-            <li class="banners__item">
-              <article class="banners__article banners-article banners-article--midseason">
-                <h3 class="banners-article__title">Письмове приладдя</h3>
-                <a href="./catalog.html" class="main-link banners-article__link">Детальніше</a>
-              </article>
-            </li>
-            <li class="banners__item">
-              <article class="banners__article banners-article banners-article--summer">
-                <h3 class="banners-article__title">Настільні приналежності</h3>
-                <a href="./catalog.html" class="main-link banners-article__link">Детальніше</a>
-              </article>
-            </li>
-            <li class="banners__item">
-              <article class="banners__article banners-article banners-article--accs">
-                <h3 class="banners-article__title">Офісна канцелярія</h3>
-                <a href="./catalog.html" class="main-link banners-article__link">Детальніше</a>
-              </article>
-            </li>
-          </ul>
-        </div> -->
       </section>
 
     </main>
@@ -281,6 +315,16 @@
     document.querySelector('.carousel-next').addEventListener('click', nextSlide);
 
     updateButtons();
+
+    function toggleMenu() {
+      const wrapMenu = document.querySelector('.wrap-menu');
+      const menuItems = document.querySelector('.menu-items');
+      const burgerIcon = document.querySelector('.burger-icon');
+      menuItems.classList.toggle('active');
+      wrapMenu.classList.toggle('active');
+      burgerIcon.classList.toggle('active');
+    }
+
   </script>
 
 
