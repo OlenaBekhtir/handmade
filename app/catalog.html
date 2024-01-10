@@ -22,7 +22,7 @@
     }
 
     .catalog {
-      margin-top: 100px;
+      margin-top: 120px;
       margin-inline: 70px;
     }
 
@@ -33,22 +33,32 @@
 </head>
 
 <body>
-  <header class="header catalog-header">
-    <div class="container header__container">
+  <header class="header">
+    <div class="burger-icon" onclick="toggleMenu()">
       <button class="burger btn-reset header__burger">
         <span class="burger__line"></span>
       </button>
+    </div>
+    <div class="wrap-menu">
+      <span class="close-icon hidden" onclick="toggleMenu()">X</span>
+      <ul class="menu-items">
+        <li><a href="./index.html">Головна</a></li>
+        <li><a href="./catalog.html">Каталог</a></li>
+        <li><a href="./basket.html">Кошик</a></li>
+      </ul>
+    </div>
+    <div class="container header__container">
       <nav class="nav header__nav">
         <ul class="nav__list">
-          <li class="nav__item"><a href="./index.html" class="main-link nav__link">Головна</a></li>
-          <li class="nav__item"><a href="./catalog.html" class="main-link nav__link--current">Каталог</a></li>
+          <li class="nav__item"><a href="./index.html" class="main-link nav__link--current">Головна</a></li>
+          <li class="nav__item"><a href="./catalog.html" class="main-link nav__link">Каталог</a></li>
           <li class="nav__item"><a href="./basket.html" class="main-link nav__link nav__link">Кошик</a></li>
         </ul>
         <button class="nav__close btn-reset">close</button>
+        <a href="./index.html"><img class="logo-img" src="./img/handmade_logo.jpg" alt="logo" /></a>
       </nav>
-      <a href="./index.html"><img class="logo-img" src="./img/handmade_logo.jpg" alt="logo" /></a>
-    </div>
-  </header>
+</header>
+
 
   <main class="main">
     <section class="catalog">
@@ -1064,6 +1074,20 @@
     <img src="./img/up_arrow.jpg" alt="#" />
   </a>
   </div>
+
+  <script>
+    function toggleMenu() {
+      const wrapMenu = document.querySelector('.wrap-menu');
+      const menuItems = document.querySelector('.menu-items');
+      const burgerIcon = document.querySelector('.burger-icon');
+      const closeIcon = document.querySelector('.close-icon');
+
+      menuItems.classList.toggle('active');
+      wrapMenu.classList.toggle('active');
+      burgerIcon.classList.toggle('active');
+      closeIcon.classList.toggle('hidden'); // Додано перевірку для приховування/показу іконки
+    }
+  </script>
 
 </body>
 
